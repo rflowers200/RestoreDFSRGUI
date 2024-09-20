@@ -165,12 +165,13 @@ function Restore-File {
     )
     $filetorestore ="$ConflictDir$restorefile"
     #$restorefilepath = $Path -split " \| "
+    $RestoreFileName = Split-Path -Path $Path -Leaf
     Write-host $Path
-    Write-host $restorefile
+    Write-host $$RestoreFileName
     Write-host $filetorestore
     # Implement actual logic to restore files
     If (Test-Path -path $filetorestore -PathType Leaf) {
-    Move-Item -Path "$filetorestore" -Destination "c:\temp\$restorefile" -ErrorAction SilentlyContinue
+    Move-Item -Path "$filetorestore" -Destination "c:\temp\$RestoreFileName" -ErrorAction SilentlyContinue
     #Move-Item -Path "$filetorestore" -Destination "$path" -ErrorAction SilentlyContinue
     
 }
